@@ -24,14 +24,22 @@ export default function TheProblem() {
   const cliffLabels: { x: number; label: string }[] = [];
   for (let i = 1; i < earnings.length; i++) {
     if (baseline.mtr[i]! > 1.0) {
-      const snapDrop = baseline.snap[i - 1]! - baseline.snap[i]!;
-      const totalBenefitsDrop = baseline.benefits[i - 1]! - baseline.benefits[i]!;
-      const otherDrop = totalBenefitsDrop - snapDrop;
+      const snapBefore = baseline.snap[i - 1]!;
+      const snapAfter = baseline.snap[i]!;
+      const snapDrop = snapBefore - snapAfter;
+      const totalDrop = baseline.benefits[i - 1]! - baseline.benefits[i]!;
       let label = "";
-      if (snapDrop > otherDrop) {
-        label = "SNAP";
-      } else {
+      if (snapAfter > 0 && snapDrop > 0) {
+        // SNAP partially lost (fails gross income test for most months)
+        label = "SNAP (130% FPL)";
+      } else if (snapBefore > 0 && snapAfter === 0) {
+        // SNAP fully lost + school meals transition
+        label = "SNAP + school meals";
+      } else if (snapDrop === 0 && totalDrop > 0) {
+        // Non-SNAP cliff (school meals)
         label = "School meals";
+      } else {
+        label = "Benefits cliff";
       }
       cliffLabels.push({ x: earnings[i]!, label });
     }
@@ -265,9 +273,9 @@ export default function TheProblem() {
             text: c.label,
             showarrow: true,
             arrowhead: 0,
-            ax: idx === 1 ? 40 : 0,
+            ax: idx === 0 ? -50 : idx === 1 ? 60 : 0,
             ay: -30,
-            font: { size: 12, family: INTER_FONT },
+            font: { size: 11, family: INTER_FONT },
           })),
           legend: { ...chartLayout.legend, orientation: "h", y: -0.2 },
           autosize: true,
