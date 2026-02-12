@@ -1,24 +1,25 @@
-import { createTheme } from "@mantine/core";
+import { createTheme, MantineColorsTuple } from "@mantine/core";
+
+// PolicyEngine teal palette from @policyengine/design-system
+const teal: MantineColorsTuple = [
+  "#E6FFFA",
+  "#B2F5EA",
+  "#81E6D9",
+  "#4FD1C5",
+  "#38B2AC",
+  "#319795",
+  "#2C7A7B",
+  "#285E61",
+  "#234E52",
+  "#1D4044",
+];
 
 const theme = createTheme({
+  primaryColor: "teal",
+  colors: { teal },
   fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
   headings: {
     fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-  },
-  primaryColor: "blue",
-  colors: {
-    blue: [
-      "#e6f0ff",
-      "#b3d1ff",
-      "#80b3ff",
-      "#4d94ff",
-      "#1a75ff",
-      "#2C6496",
-      "#1a5276",
-      "#154360",
-      "#0f2d40",
-      "#0a1f2e",
-    ],
   },
 });
 

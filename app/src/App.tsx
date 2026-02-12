@@ -1,42 +1,36 @@
 import { MantineProvider, Container, Title, Tabs, Space } from "@mantine/core";
 import theme from "./theme";
-import ConservationLaw from "./components/ConservationLaw";
-import MtrComparison from "./components/MtrComparison";
-import TwoPeriodModel from "./components/TwoPeriodModel";
-import CtResults from "./components/CtResults";
+import TheProblem from "./components/TheProblem";
+import TheReform from "./components/TheReform";
+import TheMath from "./components/TheMath";
 
 export default function App() {
   return (
     <MantineProvider theme={theme}>
       <Container size="lg" py="xl">
         <Title order={1} mb="lg">
-          Benefits Cliffs Analysis
+          How Missouri's Transitional Benefits Program reshapes cliffs
         </Title>
 
-        <Tabs defaultValue="conservation">
+        <Tabs defaultValue="problem" color="teal">
           <Tabs.List>
-            <Tabs.Tab value="conservation">Conservation Law</Tabs.Tab>
-            <Tabs.Tab value="mtr">MTR Comparison</Tabs.Tab>
-            <Tabs.Tab value="two-period">Two-Period Model</Tabs.Tab>
-            <Tabs.Tab value="ct-results">CT Results</Tabs.Tab>
+            <Tabs.Tab value="problem">The problem</Tabs.Tab>
+            <Tabs.Tab value="reform">The reform</Tabs.Tab>
+            <Tabs.Tab value="math">The math</Tabs.Tab>
           </Tabs.List>
 
           <Space h="md" />
 
-          <Tabs.Panel value="conservation">
-            <ConservationLaw />
+          <Tabs.Panel value="problem">
+            <TheProblem />
           </Tabs.Panel>
 
-          <Tabs.Panel value="mtr">
-            <MtrComparison />
+          <Tabs.Panel value="reform">
+            <TheReform />
           </Tabs.Panel>
 
-          <Tabs.Panel value="two-period">
-            <TwoPeriodModel />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="ct-results">
-            <CtResults />
+          <Tabs.Panel value="math">
+            <TheMath />
           </Tabs.Panel>
         </Tabs>
       </Container>
