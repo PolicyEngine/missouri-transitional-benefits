@@ -20,6 +20,23 @@ export default function TheProblem() {
   const cliffCount = baseline.mtr.filter((m) => m > 1.0).length;
   const maxSnap = Math.max(...baseline.snap);
 
+  // Identify cliff points and their causes
+  const cliffLabels: { x: number; label: string }[] = [];
+  for (let i = 1; i < earnings.length; i++) {
+    if (baseline.mtr[i]! > 1.0) {
+      const snapDrop = baseline.snap[i - 1]! - baseline.snap[i]!;
+      const totalBenefitsDrop = baseline.benefits[i - 1]! - baseline.benefits[i]!;
+      const otherDrop = totalBenefitsDrop - snapDrop;
+      let label = "";
+      if (snapDrop > otherDrop) {
+        label = "SNAP";
+      } else {
+        label = "School meals";
+      }
+      cliffLabels.push({ x: earnings[i]!, label });
+    }
+  }
+
   return (
     <Stack gap="md">
       <Title order={2}>
@@ -242,6 +259,16 @@ export default function TheProblem() {
             title: "Marginal tax rate (%)",
             range: [-105, 105],
           },
+          annotations: cliffLabels.map((c, idx) => ({
+            x: c.x,
+            y: 100,
+            text: c.label,
+            showarrow: true,
+            arrowhead: 0,
+            ax: idx === 1 ? 40 : 0,
+            ay: -30,
+            font: { size: 12, family: INTER_FONT },
+          })),
           legend: { ...chartLayout.legend, orientation: "h", y: -0.2 },
           autosize: true,
         }}
