@@ -69,13 +69,12 @@ export default function TheReform() {
         >
           SB 82
         </a>{" "}
-        (signed 2023) created a transitional benefits program, raising income
-        limits from {metadata.baseline_desc.toLowerCase()} to{" "}
-        {metadata.reform_desc.toLowerCase()}. This extends the income range
-        over which households receive SNAP benefits. Below, we examine how
-        this affects the distribution of marginal tax rates and the size of
-        benefit cliffs when accounting for the multi-year value of
-        eligibility.
+        (signed 2023) created a transitional benefits program. Under Section
+        208.035, beneficiaries whose income rises above the standard SNAP
+        threshold receive gradually reduced benefits — decreasing
+        proportionally as income increases, up to 300% of the federal poverty
+        level. Below, we examine how this income-based phase-out affects the
+        distribution of marginal tax rates and the size of benefit cliffs.
       </Text>
 
       {/* SNAP benefit: baseline vs reform */}
@@ -237,25 +236,24 @@ export default function TheReform() {
         </Group>
       </Paper>
 
-      {/* PV of SNAP with extended eligibility */}
+      {/* PV of SNAP with multi-year horizon */}
       <Title order={3} mt="md">
-        Multi-year eligibility and the entry cliff
+        Multi-year value of SNAP eligibility
       </Title>
 
       <Text>
-        Under the transitional program, a household whose earnings rise
-        above the standard SNAP threshold continues receiving benefits
-        for up to {extensionPeriods} additional year
-        {extensionPeriods > 1 ? "s" : ""}. This means the value at stake
-        at the eligibility boundary is not one year of SNAP, but the sum
-        across all years of transitional eligibility.
+        SNAP eligibility is not a one-time event. A household that qualifies
+        in one year typically remains eligible in subsequent years if its
+        income stays below the threshold. The total value at stake at the
+        eligibility boundary is therefore not one year of SNAP, but the
+        cumulative benefit across a multi-year horizon.
       </Text>
 
       <Paper p="md" withBorder>
         <Stack gap="lg">
           <div>
             <Text fw={500} mb="xs">
-              Extension periods: {extensionPeriods} year
+              Planning horizon: {extensionPeriods} additional year
               {extensionPeriods > 1 ? "s" : ""}
             </Text>
             <Slider
@@ -279,7 +277,7 @@ export default function TheReform() {
             y: standardTotal,
             type: "scatter",
             mode: "lines",
-            name: `Standard (${metadata.year} only)`,
+            name: `${metadata.year} only`,
             line: { color: chartColors.primary, width: 2 },
           },
           {
@@ -287,7 +285,7 @@ export default function TheReform() {
             y: extendedTotal,
             type: "scatter",
             mode: "lines",
-            name: `Extended (${metadata.year}–${metadata.year + extensionPeriods})`,
+            name: `${metadata.year}–${metadata.year + extensionPeriods} cumulative`,
             line: { color: chartColors.negative, width: 2 },
           },
         ]}
@@ -314,7 +312,7 @@ export default function TheReform() {
 
       <Paper p="md" withBorder bg="gray.0">
         <Title order={4} mb="xs">
-          Entry cliff at eligibility threshold
+          Largest cliff at eligibility threshold
         </Title>
         <Group gap="xl">
           <div>
@@ -322,7 +320,7 @@ export default function TheReform() {
               ${maxStdCliff.toLocaleString()}
             </Text>
             <Text size="sm" c="dimmed">
-              standard (1 year)
+              single year
             </Text>
           </div>
           <div>
@@ -330,17 +328,16 @@ export default function TheReform() {
               ${maxExtCliff.toLocaleString()}
             </Text>
             <Text size="sm" c="dimmed">
-              extended ({1 + extensionPeriods} years)
+              {1 + extensionPeriods}-year horizon
             </Text>
           </div>
         </Group>
         <Text size="sm" c="dimmed" mt="xs">
-          Extending eligibility by {extensionPeriods} year
-          {extensionPeriods > 1 ? "s" : ""} multiplies the largest cliff by{" "}
+          Over a {1 + extensionPeriods}-year horizon, the largest cliff is{" "}
           {maxStdCliff > 0
             ? (maxExtCliff / maxStdCliff).toFixed(1)
             : "—"}
-          x.
+          x the single-year value.
         </Text>
       </Paper>
     </Stack>
