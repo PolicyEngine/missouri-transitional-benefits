@@ -36,3 +36,4 @@ htmlcov/
 
 # Ruff
 .ruff_cache/
+.vercel

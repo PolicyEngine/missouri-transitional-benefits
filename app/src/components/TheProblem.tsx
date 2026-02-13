@@ -48,16 +48,16 @@ export default function TheProblem() {
   return (
     <Stack gap="md">
       <Title order={2}>
-        Current SNAP in Missouri has cliffs
+        Current SNAP benefit structure in Missouri
       </Title>
 
       <Text>
         Consider a {metadata.household.toLowerCase()} in {metadata.state} (
         {metadata.year}). SNAP (the Supplemental Nutrition Assistance Program)
-        provides up to ${maxSnap.toLocaleString()}/year in food benefits. But
-        because eligibility is all-or-nothing at income thresholds, small
-        earnings increases can trigger sudden benefit losses — cliffs where a
-        household loses more than it gains.
+        provides up to ${maxSnap.toLocaleString()}/year in food benefits.
+        Because eligibility is determined by income thresholds, certain
+        earnings increases can produce abrupt changes in benefits — points
+        where additional earnings reduce net income.
       </Text>
 
       <Paper p="lg" withBorder>

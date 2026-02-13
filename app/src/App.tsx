@@ -12,16 +12,16 @@ export default function App() {
           How Missouri's Transitional Benefits Program reshapes cliffs
         </Title>
 
-        <Tabs defaultValue="problem" color="teal">
+        <Tabs defaultValue="current" color="teal">
           <Tabs.List>
-            <Tabs.Tab value="problem">The problem</Tabs.Tab>
+            <Tabs.Tab value="current">Current law</Tabs.Tab>
             <Tabs.Tab value="reform">The reform</Tabs.Tab>
             <Tabs.Tab value="math">The math</Tabs.Tab>
           </Tabs.List>
 
           <Space h="md" />
 
-          <Tabs.Panel value="problem">
+          <Tabs.Panel value="current">
             <TheProblem />
           </Tabs.Panel>
 

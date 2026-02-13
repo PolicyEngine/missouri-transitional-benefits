@@ -57,7 +57,7 @@ export default function TheReform() {
 
   return (
     <Stack gap="md">
-      <Title order={2}>Missouri's reform extends eligibility — but doesn't fix cliffs</Title>
+      <Title order={2}>How the reform changes the cliff structure</Title>
 
       <Text>
         Missouri{" "}
@@ -71,9 +71,9 @@ export default function TheReform() {
         </a>{" "}
         (signed 2023) created a transitional benefits program, raising income
         limits from {metadata.baseline_desc.toLowerCase()} to{" "}
-        {metadata.reform_desc.toLowerCase()}. The idea: let households keep
-        benefits longer as earnings rise. But does spreading the phase-out
-        actually reduce cliffs?
+        {metadata.reform_desc.toLowerCase()}. This extends the income range
+        over which households receive SNAP benefits. Below, we examine how
+        this affects the distribution of marginal tax rates.
       </Text>
 
       {/* SNAP benefit: baseline vs reform */}
@@ -204,13 +204,19 @@ export default function TheReform() {
         <Title order={3} mb="xs">
           The MTR integral is conserved
         </Title>
+        <Text size="sm" mb="sm">
+          The integral of a program's marginal tax rate over income equals
+          the maximum benefit (see <em>The math</em> tab). This means
+          changing eligibility thresholds redistributes MTR across the
+          income distribution, but does not change the total.
+        </Text>
         <Group gap="xl">
           <div>
             <Text size="xl" fw={700} c={PE_TEAL}>
               ${baseline.snap_integral.toLocaleString()}
             </Text>
             <Text size="sm" c="dimmed">
-              baseline
+              baseline ∫MTR
             </Text>
           </div>
           <div>
@@ -223,26 +229,21 @@ export default function TheReform() {
               ${reform.snap_integral.toLocaleString()}
             </Text>
             <Text size="sm" c="dimmed">
-              reform
+              reform ∫MTR
             </Text>
           </div>
         </Group>
-        <Text size="sm" mt="xs">
-          The integral of SNAP's marginal tax rate across all income levels is
-          identical under both policies. The reform spreads the same total MTR
-          burden over a wider income range — but cannot reduce it.
-        </Text>
       </Paper>
 
       {/* PV of SNAP with extended eligibility */}
       <Title order={3} mt="md">
-        Capitalization makes the entry cliff bigger
+        Multi-year eligibility and the entry cliff
       </Title>
 
       <Text>
         If extended eligibility means a household qualifies for{" "}
         {1 + extensionPeriods} years of SNAP instead of 1, the entry cliff
-        isn't just one year of benefits — it's all of them combined.
+        reflects all years of benefits combined rather than a single year.
       </Text>
 
       <Paper p="md" withBorder>
@@ -334,7 +335,7 @@ export default function TheReform() {
           {maxStdCliff > 0
             ? (maxExtCliff / maxStdCliff).toFixed(1)
             : "—"}
-          x. The cliff doesn't shrink — it grows.
+          x.
         </Text>
       </Paper>
     </Stack>
