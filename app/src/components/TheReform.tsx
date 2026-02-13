@@ -243,9 +243,12 @@ export default function TheReform() {
       </Title>
 
       <Text>
-        If extended eligibility means a household qualifies for{" "}
-        {1 + extensionPeriods} years of SNAP instead of 1, the entry cliff
-        reflects all years of benefits combined rather than a single year.
+        Under the transitional program, a household whose earnings rise
+        above the standard SNAP threshold continues receiving benefits
+        for up to {extensionPeriods} additional year
+        {extensionPeriods > 1 ? "s" : ""}. This means the value at stake
+        at the eligibility boundary is not one year of SNAP, but the sum
+        across all years of transitional eligibility.
       </Text>
 
       <Paper p="md" withBorder>
