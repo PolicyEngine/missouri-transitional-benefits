@@ -73,7 +73,9 @@ export default function TheReform() {
         limits from {metadata.baseline_desc.toLowerCase()} to{" "}
         {metadata.reform_desc.toLowerCase()}. This extends the income range
         over which households receive SNAP benefits. Below, we examine how
-        this affects the distribution of marginal tax rates.
+        this affects the distribution of marginal tax rates and the size of
+        benefit cliffs when accounting for the multi-year value of
+        eligibility.
       </Text>
 
       {/* SNAP benefit: baseline vs reform */}
