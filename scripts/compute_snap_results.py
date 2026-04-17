@@ -17,8 +17,6 @@ from __future__ import annotations
 import json
 import os
 
-import numpy as np
-
 try:
     from policyengine_us import Simulation
 except ImportError as exc:
