@@ -82,96 +82,101 @@ export default function TheProblem() {
       </Paper>
 
       {/* SNAP benefit vs earnings (baseline only) */}
-      <Plot
-        data={[
-          {
-            x: earnings,
-            y: baseline.snap,
-            type: "scatter",
-            mode: "lines",
-            name: "SNAP benefit",
-            line: { color: chartColors.primary, width: 2 },
-          },
-        ]}
-        layout={{
-          ...chartLayout,
-          title: undefined,
-          xaxis: {
-            ...chartLayout.xaxis,
-            title: "Employment income",
-            tickformat: "$,.0f",
-          },
-          yaxis: {
-            ...chartLayout.yaxis,
-            title: "Annual SNAP benefit",
-            tickformat: "$,.0f",
-            rangemode: "tozero",
-          },
-          legend: { ...chartLayout.legend, orientation: "h", y: -0.2 },
-          autosize: true,
-        }}
-        config={{ responsive: true, displayModeBar: false }}
-        style={{ width: "100%", height: "400px" }}
-      />
+      <div role="img" aria-label="Line chart showing annual SNAP benefit amount decreasing as employment income increases for a Missouri household">
+        <Plot
+          data={[
+            {
+              x: earnings,
+              y: baseline.snap,
+              type: "scatter",
+              mode: "lines",
+              name: "SNAP benefit",
+              line: { color: chartColors.primary, width: 2 },
+            },
+          ]}
+          layout={{
+            ...chartLayout,
+            title: undefined,
+            xaxis: {
+              ...chartLayout.xaxis,
+              title: "Employment income",
+              tickformat: "$,.0f",
+            },
+            yaxis: {
+              ...chartLayout.yaxis,
+              title: "Annual SNAP benefit",
+              tickformat: "$,.0f",
+              rangemode: "tozero",
+            },
+            legend: { ...chartLayout.legend, orientation: "h", y: -0.2 },
+            autosize: true,
+          }}
+          config={{ responsive: true, displayModeBar: false }}
+          style={{ width: "100%", height: "400px" }}
+        />
+      </div>
 
       {/* Benefit breakdown */}
-      <Plot
-        data={[
-          {
-            x: earnings,
-            y: baseline.snap,
-            type: "scatter",
-            mode: "lines",
-            name: "SNAP",
-            line: { color: chartColors.primary, width: 2 },
-          },
-          {
-            x: earnings,
-            y: baseline.eitc,
-            type: "scatter",
-            mode: "lines",
-            name: "EITC",
-            line: { color: chartColors.positive, width: 2 },
-          },
-          {
-            x: earnings,
-            y: baseline.ctc,
-            type: "scatter",
-            mode: "lines",
-            name: "CTC",
-            line: { color: chartColors.secondary, width: 2 },
-          },
-          {
-            x: earnings,
-            y: baseline.benefits,
-            type: "scatter",
-            mode: "lines",
-            name: "Total benefits (SPM)",
-            line: { color: chartColors.neutral, width: 1, dash: "dash" },
-          },
-        ]}
-        layout={{
-          ...chartLayout,
-          title: undefined,
-          xaxis: {
-            ...chartLayout.xaxis,
-            title: "Employment income",
-            tickformat: "$,.0f",
-          },
-          yaxis: {
-            ...chartLayout.yaxis,
-            title: "Annual amount",
-            tickformat: "$,.0f",
-            rangemode: "tozero",
-          },
-          legend: { ...chartLayout.legend, orientation: "h", y: -0.2 },
-          autosize: true,
-        }}
-        config={{ responsive: true, displayModeBar: false }}
-        style={{ width: "100%", height: "400px" }}
-      />
+      <div role="img" aria-label="Line chart showing breakdown of SNAP, EITC, CTC, and total benefits by employment income level">
+        <Plot
+          data={[
+            {
+              x: earnings,
+              y: baseline.snap,
+              type: "scatter",
+              mode: "lines",
+              name: "SNAP",
+              line: { color: chartColors.primary, width: 2 },
+            },
+            {
+              x: earnings,
+              y: baseline.eitc,
+              type: "scatter",
+              mode: "lines",
+              name: "EITC",
+              line: { color: chartColors.positive, width: 2 },
+            },
+            {
+              x: earnings,
+              y: baseline.ctc,
+              type: "scatter",
+              mode: "lines",
+              name: "CTC",
+              line: { color: chartColors.secondary, width: 2 },
+            },
+            {
+              x: earnings,
+              y: baseline.benefits,
+              type: "scatter",
+              mode: "lines",
+              name: "Total benefits (SPM)",
+              line: { color: chartColors.neutral, width: 1, dash: "dash" },
+            },
+          ]}
+          layout={{
+            ...chartLayout,
+            title: undefined,
+            xaxis: {
+              ...chartLayout.xaxis,
+              title: "Employment income",
+              tickformat: "$,.0f",
+            },
+            yaxis: {
+              ...chartLayout.yaxis,
+              title: "Annual amount",
+              tickformat: "$,.0f",
+              rangemode: "tozero",
+            },
+            legend: { ...chartLayout.legend, orientation: "h", y: -0.2 },
+            autosize: true,
+          }}
+          config={{ responsive: true, displayModeBar: false }}
+          style={{ width: "100%", height: "400px" }}
+        />
+      </div>
 
       {/* Net income vs earnings with 45° line (baseline only) */}
+      <div role="img" aria-label="Line chart comparing net income to employment income, showing where benefits cliffs cause net income to decrease">
       <Plot
         data={[
           {
@@ -210,8 +215,10 @@ export default function TheProblem() {
         config={{ responsive: true, displayModeBar: false }}
         style={{ width: "100%", height: "400px" }}
       />
+      </div>
 
       {/* Total MTR (baseline only) */}
+      <div role="img" aria-label="Line chart of marginal tax rates by income level, highlighting cliff points where rates exceed 100 percent">
       <Plot
         data={[
           {
@@ -283,6 +290,7 @@ export default function TheProblem() {
         config={{ responsive: true, displayModeBar: false }}
         style={{ width: "100%", height: "400px" }}
       />
+      </div>
 
       <Paper p="md" withBorder bg="gray.0">
         <Text size="sm">

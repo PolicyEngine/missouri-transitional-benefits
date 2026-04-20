@@ -78,6 +78,7 @@ export default function TheReform() {
       </Text>
 
       {/* SNAP benefit: baseline vs reform */}
+      <div role="img" aria-label="Line chart comparing baseline and reform SNAP benefits across income levels, showing how the reform smooths the phase-out">
       <Plot
         data={[
           {
@@ -117,8 +118,10 @@ export default function TheReform() {
         config={{ responsive: true, displayModeBar: false }}
         style={{ width: "100%", height: "400px" }}
       />
+      </div>
 
       {/* SNAP MTR: baseline vs reform */}
+      <div role="img" aria-label="Line chart comparing baseline and reform SNAP marginal tax rates, showing cliff points where rates exceed 100 percent">
       <Plot
         data={[
           {
@@ -199,6 +202,7 @@ export default function TheReform() {
         config={{ responsive: true, displayModeBar: false }}
         style={{ width: "100%", height: "400px" }}
       />
+      </div>
 
       {/* Conservation integral box */}
       <Paper p="lg" withBorder bg="teal.0">
@@ -264,12 +268,14 @@ export default function TheReform() {
               value={extensionPeriods}
               onChange={setExtensionPeriods}
               label={(v) => `${v} year${v > 1 ? "s" : ""}`}
+              aria-label="Planning horizon in additional years"
             />
           </div>
 
         </Stack>
       </Paper>
 
+      <div role="img" aria-label="Line chart comparing single-year and multi-year cumulative SNAP benefits, showing how cliffs grow over longer planning horizons">
       <Plot
         data={[
           {
@@ -309,6 +315,7 @@ export default function TheReform() {
         config={{ responsive: true, displayModeBar: false }}
         style={{ width: "100%", height: "450px" }}
       />
+      </div>
 
       <Paper p="md" withBorder bg="gray.0">
         <Title order={4} mb="xs">
