@@ -7,13 +7,15 @@ import TheMath from "./components/TheMath";
 export default function App() {
   return (
     <MantineProvider theme={theme}>
-      <Container size="lg" py="xl">
-        <Title order={1} mb="lg">
-          How Missouri's Transitional Benefits Program reshapes cliffs
-        </Title>
+      <Container component="main" size="lg" py="xl" role="main">
+        <header>
+          <Title order={1} mb="lg">
+            How Missouri's Transitional Benefits Program reshapes cliffs
+          </Title>
+        </header>
 
         <Tabs defaultValue="current" color="teal">
-          <Tabs.List>
+          <Tabs.List aria-label="Analysis sections">
             <Tabs.Tab value="current">Current law</Tabs.Tab>
             <Tabs.Tab value="reform">The reform</Tabs.Tab>
             <Tabs.Tab value="math">The math</Tabs.Tab>
@@ -22,15 +24,21 @@ export default function App() {
           <Space h="md" />
 
           <Tabs.Panel value="current">
-            <TheProblem />
+            <section aria-label="Current SNAP benefit structure">
+              <TheProblem />
+            </section>
           </Tabs.Panel>
 
           <Tabs.Panel value="reform">
-            <TheReform />
+            <section aria-label="Reform analysis">
+              <TheReform />
+            </section>
           </Tabs.Panel>
 
           <Tabs.Panel value="math">
-            <TheMath />
+            <section aria-label="Mathematical framework">
+              <TheMath />
+            </section>
           </Tabs.Panel>
         </Tabs>
       </Container>
