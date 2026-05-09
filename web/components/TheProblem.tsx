@@ -1,10 +1,15 @@
+"use client";
+
 import { Stack, Title, Text, Paper, Group } from "@mantine/core";
-import Plot from "react-plotly.js";
+import dynamic from "next/dynamic";
 import {
   chartLayout as _chartLayout,
   chartColors,
 } from "@policyengine/ui-kit/legacy/charts";
-import snapResults from "../data/snap_results.json";
+import snapResults from "@/data/snap_results.json";
+
+// Plotly is browser-only — disable SSR.
+const Plot = dynamic(() => import("./PlotlyChart"), { ssr: false });
 
 const INTER_FONT = "Inter, -apple-system, BlinkMacSystemFont, sans-serif";
 const PE_TEAL = "#319795";

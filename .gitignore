@@ -12,10 +12,12 @@ build/
 venv/
 env/
 
-# Node
+# Node / Next.js
 node_modules/
-app/dist/
-app/.vite/
+web/.next/
+web/out/
+web/next-env.d.ts
+web/tsconfig.tsbuildinfo
 .env
 .env.local
 
@@ -37,3 +39,4 @@ htmlcov/
 # Ruff
 .ruff_cache/
 .vercel
+.env*.local

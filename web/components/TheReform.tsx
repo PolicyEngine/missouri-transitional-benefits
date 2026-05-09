@@ -1,12 +1,16 @@
+"use client";
+
 import { useState, useMemo } from "react";
 import { Stack, Title, Text, Paper, Slider, Group } from "@mantine/core";
-
-import Plot from "react-plotly.js";
+import dynamic from "next/dynamic";
 import {
   chartLayout as _chartLayout,
   chartColors,
 } from "@policyengine/ui-kit/legacy/charts";
-import snapResults from "../data/snap_results.json";
+import snapResults from "@/data/snap_results.json";
+
+// Plotly is browser-only — disable SSR.
+const Plot = dynamic(() => import("./PlotlyChart"), { ssr: false });
 
 const INTER_FONT = "Inter, -apple-system, BlinkMacSystemFont, sans-serif";
 const PE_TEAL = "#319795";
@@ -210,7 +214,7 @@ export default function TheReform() {
           The MTR integral is conserved
         </Title>
         <Text size="sm" mb="sm">
-          The integral of a program's marginal tax rate over income equals
+          The integral of a program&apos;s marginal tax rate over income equals
           the maximum benefit (see <em>The math</em> tab). This means
           changing eligibility thresholds redistributes MTR across the
           income distribution, but does not change the total.
