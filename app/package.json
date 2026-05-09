@@ -11,7 +11,7 @@
   "dependencies": {
     "@mantine/core": "^8.0.0",
     "@mantine/hooks": "^8.0.0",
-    "@policyengine/design-system": "latest",
+    "@policyengine/ui-kit": "^0.8.0",
     "katex": "^0.16.0",
     "plotly.js-dist-min": "^2.35.0",
     "react": "^19.0.0",

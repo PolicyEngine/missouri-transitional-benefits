@@ -17,7 +17,7 @@ declare module "plotly.js-dist-min" {
   export default Plotly;
 }
 
-declare module "@policyengine/design-system/tokens/colors" {
+declare module "@policyengine/ui-kit/legacy/tokens/colors" {
   export const colors: {
     primary: Record<string, string> & {
       alpha: Record<string, string>;
@@ -45,7 +45,7 @@ declare module "@policyengine/design-system/tokens/colors" {
   export const INFO_BLUE: string;
 }
 
-declare module "@policyengine/design-system/charts" {
+declare module "@policyengine/ui-kit/legacy/charts" {
   export const chartColors: {
     primary: string;
     secondary: string;

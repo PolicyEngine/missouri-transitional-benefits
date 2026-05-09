@@ -1,6 +1,6 @@
 import { createTheme, MantineColorsTuple } from "@mantine/core";
 
-// PolicyEngine teal palette from @policyengine/design-system
+// PolicyEngine teal palette from @policyengine/ui-kit
 const teal: MantineColorsTuple = [
   "#E6FFFA",
   "#B2F5EA",
