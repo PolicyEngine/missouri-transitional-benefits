@@ -5,7 +5,7 @@ import Plot from "react-plotly.js";
 import {
   chartLayout as _chartLayout,
   chartColors,
-} from "@policyengine/design-system/charts";
+} from "@policyengine/ui-kit/legacy/charts";
 import snapResults from "../data/snap_results.json";
 
 const INTER_FONT = "Inter, -apple-system, BlinkMacSystemFont, sans-serif";
