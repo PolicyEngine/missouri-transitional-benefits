@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "@policyengine/ui-kit/theme.css";
+@import "@mantine/core/styles.css";
+@import "katex/dist/katex.min.css";

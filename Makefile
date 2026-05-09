@@ -2,7 +2,7 @@
 
 install:
 	pip install -e ".[microsim]"
-	cd app && npm install
+	cd web && bun install
 
 test:
 	pytest
@@ -18,10 +18,10 @@ lint:
 	ruff check .
 
 app-dev:
-	cd app && npm run dev
+	cd web && bun run dev
 
 app-build:
-	cd app && npm run build
+	cd web && bun run build
 
 compute-ct-results:
 	python scripts/compute_ct_results.py

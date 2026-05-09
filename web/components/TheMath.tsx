@@ -1,6 +1,7 @@
+"use client";
+
 import { Stack, Title, Text, Paper } from "@mantine/core";
 import katex from "katex";
-import "katex/dist/katex.min.css";
 
 function Tex({
   children,
@@ -73,7 +74,7 @@ export default function TheMath() {
       </Paper>
 
       <Text>
-        Extended eligibility doesn't reduce the conservation integral — it
+        Extended eligibility doesn&apos;t reduce the conservation integral — it
         capitalizes it. The longer the eligibility window, the larger the stake
         at the entry threshold, and the stronger the disincentive to cross it.
       </Text>

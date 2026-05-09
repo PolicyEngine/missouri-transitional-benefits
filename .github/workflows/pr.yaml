@@ -5,7 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  lint-python:
+    name: Lint (Python)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -16,6 +17,7 @@ jobs:
       - run: ruff check .
 
   test-core:
+    name: Test (Python)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -26,10 +28,38 @@ jobs:
       - run: pip install pytest
       - run: pytest -m "not microsim"
 
-  build-app:
+  lint-web:
+    name: Lint (web)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
     steps:
       - uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2
-      - run: cd app && bun install --frozen-lockfile
-      - run: cd app && bun run build
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+
+  build-web:
+    name: Build (web)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+
+  test-web:
+    name: Test (web)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run test

@@ -1,6 +1,7 @@
 {
-  "buildCommand": "cd app && npm install && npm run build",
-  "outputDirectory": "app/dist",
-  "framework": null,
+  "buildCommand": "cd web && bun run build",
+  "installCommand": "cd web && bun install",
+  "outputDirectory": "web/.next",
+  "framework": "nextjs",
   "cleanUrls": true
 }
